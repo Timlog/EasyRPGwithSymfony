@@ -1,0 +1,4 @@
+ot_core:
+    resource: "@OTCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
