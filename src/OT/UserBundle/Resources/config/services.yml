@@ -1,0 +1,4 @@
+services:
+#    ot_user.example:
+#        class: OT\UserBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

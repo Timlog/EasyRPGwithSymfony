@@ -1,0 +1,3 @@
+ot_user_homepage:
+    path:     /
+    defaults: { _controller: OTUserBundle:Default:index }

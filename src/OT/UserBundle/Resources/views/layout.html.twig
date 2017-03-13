@@ -1,0 +1,35 @@
+{# src/OT/UserBundle/Resources/views/layout.html.twig #}
+
+{% extends "OTCoreBundle::layout.html.twig" %}
+
+{% block body %}
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+    Connecté en tant que {{ app.user.username }}
+
+    -
+
+    <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a><br />
+    <a href="{{ path('fos_user_change_password') }}">Changer de password</a>
+    <a href="{{ path('fos_user_profile_edit') }}">Changer Nom d'utilisateur/E-mail</a><br />
+{% else %}
+
+    <a href="{{ path('fos_user_security_login') }}">Connexion</a><br />
+    <a href="{{ path('fos_user_registration_register') }}">Inscription</a><br />
+    <a href="{{ path('fos_user_resetting_request') }}">Password oublié</a><br />
+
+{% endif %}
+<br />
+  {# On affiche les messages flash que définissent les contrôleurs du bundle #}
+  {% for key, messages in app.session.flashbag.all() %}
+    {% for message in messages %}
+      <div class="alert alert-{{ key }}">
+        {{ message|trans({}, 'FOSUserBundle') }}
+      </div>
+    {% endfor %}
+  {% endfor %}
+
+  {% block fos_user_content %}
+  {% endblock fos_user_content %}
+
+{% endblock body %}
