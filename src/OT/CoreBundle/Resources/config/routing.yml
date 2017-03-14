@@ -1,3 +1,7 @@
 ot_core_homepage:
     path:     /
     defaults: { _controller: OTCoreBundle:Home:index }
+
+ot_core_view_Characs:
+      path:    /Characs/view_all
+      defaults: { _controller: OTCoreBundle:Charac:viewAll }

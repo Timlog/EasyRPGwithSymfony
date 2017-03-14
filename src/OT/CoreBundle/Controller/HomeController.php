@@ -8,6 +8,13 @@ class HomeController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('OTCoreBundle:Home:index.html.twig');
+    	$user = $this->getUser();
+
+    	if($user === null)
+    	{
+    		return $this->redirectToRoute('fos_user_security_login');
+    	}
+
+        return $this->redirectToRoute('ot_core_view_Characs');
     }
 }

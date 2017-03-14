@@ -1,6 +1,6 @@
-{# src/OT/UserBundle/Resources/views/layout.html.twig #}
 
-{% extends "OTCoreBundle::layout.html.twig" %}
+{% extends 'OTCoreBundle::layout.html.twig' %}
+
 
 {% block body %}
 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -19,17 +19,12 @@
     <a href="{{ path('fos_user_resetting_request') }}">Password oublié</a><br />
 
 {% endif %}
-<br />
-  {# On affiche les messages flash que définissent les contrôleurs du bundle #}
-  {% for key, messages in app.session.flashbag.all() %}
-    {% for message in messages %}
-      <div class="alert alert-{{ key }}">
-        {{ message|trans({}, 'FOSUserBundle') }}
-      </div>
-    {% endfor %}
-  {% endfor %}
 
-  {% block fos_user_content %}
-  {% endblock fos_user_content %}
+<h1> Character's list of {{ app.user.username }}</h1>
+	<ul>
+{% for Charac in listCharacs %}
+	<li> {{ Charac.name }} created on {{ Charac.date|date('d/m/Y') }} </li>
+{% endfor %}
+	</ul>
 
 {% endblock body %}
