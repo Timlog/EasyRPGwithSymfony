@@ -2,6 +2,14 @@ ot_core_homepage:
     path:     /
     defaults: { _controller: OTCoreBundle:Home:index }
 
-ot_core_view_Characs:
-      path:    /Characs/view_all
+ot_core_viewAll_characs:
+      path:    charac/view_all
       defaults: { _controller: OTCoreBundle:Charac:viewAll }
+
+ot_core_view_characs:
+      path:    charac/view/{id}
+      defaults:  
+          _controller: OTCoreBundle:Charac:view
+      requirements:
+          id:    \d+
+

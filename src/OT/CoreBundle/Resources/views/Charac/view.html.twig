@@ -1,0 +1,16 @@
+{% extends 'OTCoreBundle::layout.html.twig' %}
+
+{% block body %}
+
+
+{% if charac.user == app.user %}
+	<h1>{{ charac.name }}</h1>
+	<p> created on {{ charac.date|date('d/m/Y') }}</p>
+	<p>This Character can participate to Adventures of type : 
+	{% for category in charac.categories %}
+		{{ category.name }}{% if not loop.last %}, {% endif %}
+	 {% endfor %}
+	</p>
+{% endif %} 
+
+	{% endblock body %}

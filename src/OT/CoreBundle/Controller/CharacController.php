@@ -26,4 +26,19 @@ class CharacController extends Controller
     		));
 
     }
+    public function viewAction($id)
+    {
+        $repository = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('OTCoreBundle:Charac')
+        ;
+
+        $charac = $repository->find($id);
+
+        return $this->render('OTCoreBundle:Charac:view.html.twig', array(
+            'charac' => $charac
+            ));
+
+    }
 }

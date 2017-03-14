@@ -15,6 +15,6 @@ class HomeController extends Controller
     		return $this->redirectToRoute('fos_user_security_login');
     	}
 
-        return $this->redirectToRoute('ot_core_view_Characs');
+        return $this->redirectToRoute('ot_core_viewAll_characs');
     }
 }
