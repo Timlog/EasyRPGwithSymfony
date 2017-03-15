@@ -1,6 +1,10 @@
 {% extends 'OTCoreBundle::layout.html.twig' %}
 
+{% block title %}
+  Create a character - {{ parent() }}
+{% endblock %}
 
 {% block body %}
+<h3>Character creation form</h3>
 	{% include 'OTCoreBundle:Charac:form.html.twig' %}
 {% endblock body %}

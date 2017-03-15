@@ -17,3 +17,16 @@ ot_core_add_charac:
       path:    charac/add
       defaults: { _controller: OTCoreBundle:Charac:add }
 
+ot_core_delete_charac:
+      path:    charac/delete/{id}
+      defaults:  
+          _controller: OTCoreBundle:Charac:delete
+      requirements:
+          id:    \d+
+
+ot_core_edit_charac:
+      path:    charac/edit/{id}
+      defaults:  
+          _controller: OTCoreBundle:Charac:edit
+      requirements:
+          id:    \d+

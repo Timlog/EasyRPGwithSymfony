@@ -7,12 +7,25 @@
 <a href="{{ path('ot_core_add_charac') }}" >Create a character</a>
 
 <h1> Character's list of {{ app.user.username }}</h1>
-	<ul>
+
+<ul>
 {% for charac in listCharacs %}
-	<li><a href="/charac/view/{{ charac.id }}" > {{ charac.name }}</a> created on {{ charac.date|date('d/m/Y') }} </li>
-    {% else %}
+	<li>
+		<a href="/charac/view/{{ charac.id }}" > {{ charac.name }}</a>
+		 created on {{ charac.date|date('d/m/Y') }}   
+		 <a href="{{ path('ot_core_edit_charac', {'id': charac.id}) }}" class="btn btn-default">
+      		<i class="glyphicon glyphicon-edit"></i>
+      		Edit
+    	</a>
+
+    	<a href="{{ path('ot_core_delete_charac', {'id': charac.id}) }}" class="btn btn-danger">
+      		<i class="glyphicon glyphicon-trash"></i>
+	     	Delete
+    	</a>
+	</li>
+ {% else %}
     <li> No characters for this user.</li>
 {% endfor %}
-	</ul>
+</ul>
 
 {% endblock body %}

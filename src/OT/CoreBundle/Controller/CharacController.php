@@ -56,7 +56,7 @@ class CharacController extends Controller
     if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
       
       $user = $this->getUser();
-      $charac = $charac->setUser($user);
+      $charac->setUser($user);
 
       $em = $this->getDoctrine()->getManager();
       $em->persist($charac);
@@ -71,6 +71,56 @@ class CharacController extends Controller
       'form' => $form->createView(),
     ));
 
+    }
+
+    public function deleteAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $charac = $em->getRepository('OTCoreBundle:Charac')->find($id);
+
+    if (null === $charac) {
+      throw new NotFoundHttpException("Character with id= ".$id." doesn't exist.");
+    }
+    // On crée un formulaire vide, qui ne contiendra que le champ CSRF
+    // Cela permet de protéger la suppression d'annonce contre cette faille
+    $form = $this->get('form.factory')->create();
+
+    if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+    
+      $em->remove($charac);
+      $em->flush();
+
+      $request->getSession()->getFlashBag()->add('info', "The character has been deleted.");
+      return $this->redirectToRoute('ot_core_viewAll_characs');
+    }
+
+    return $this->render('OTCoreBundle:Charac:delete.html.twig', array(
+      'charac' => $charac,
+      'form'   => $form->createView(),
+    ));
+    }
+
+    public function editAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $charac = $em->getRepository('OTCoreBundle:Charac')->find($id);
+        $form = $this->createForm(CharacType::class, $charac);
+
+    if (null === $charac) {
+      throw new NotFoundHttpException("Character with id= ".$id." doesn't exist.");
+    }
+
+    if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+    
+      $em->flush();
+      $request->getSession()->getFlashBag()->add('info', "The character has been edited.");
+      return $this->redirectToRoute('ot_core_viewAll_characs');
+    }
+
+    return $this->render('OTCoreBundle:Charac:edit.html.twig', array(
+      'charac' => $charac,
+      'form'   => $form->createView(),
+    ));
     }
 
 }

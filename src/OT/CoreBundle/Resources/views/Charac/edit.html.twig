@@ -1,0 +1,16 @@
+{# src/OT/CoreBundle/Resources/views/Charac/edit.html.twig #}
+
+
+{% extends "OTCoreBundle::layout.html.twig" %}
+
+{% block title %}
+  Edit a character - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+  <h2>Edit a character</h2>
+
+    {% include 'OTCoreBundle:Charac:form.html.twig' %}
+
+{% endblock %}
