@@ -6,10 +6,14 @@ ot_core_viewAll_characs:
       path:    charac/view_all
       defaults: { _controller: OTCoreBundle:Charac:viewAll }
 
-ot_core_view_characs:
+ot_core_view_charac:
       path:    charac/view/{id}
       defaults:  
           _controller: OTCoreBundle:Charac:view
       requirements:
           id:    \d+
+
+ot_core_add_charac:
+      path:    charac/add
+      defaults: { _controller: OTCoreBundle:Charac:add }
 

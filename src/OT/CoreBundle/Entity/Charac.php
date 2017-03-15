@@ -3,6 +3,7 @@
 namespace OT\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Charac
@@ -56,7 +57,7 @@ class Charac
         $this->categories = new ArrayCollection();
     }
 
-    public function setUser(User $user)
+    public function setUser(\OT\UserBundle\Entity\User $user)
     {
         $this->user = $user;
         return $this;
